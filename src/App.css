@@ -29,13 +29,21 @@
 }
 
 .searchbox {
+  background: #fefefe !important;
   min-width: 400px;
   border-radius: 30px;
   background: none;
+  padding: 5px 16px !important;
+}
+
+.searchbox:focus {
+  background: #fff;
 }
 
 .suggestionlist {
-  color:  #424242;
+  color: #424242;
+  width: 90%;
+  margin-left: 5%;
 }
 
 .display {
@@ -73,4 +81,19 @@
   left: 320px;
   padding: 0px 30px;
   background-color: #fefefe;
+}
+
+.result-image {
+  background-size: cover !important;
+  max-height: 200px !important;
+}
+
+.result-author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-stats {
+  font-size: 12px;
 }

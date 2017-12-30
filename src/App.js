@@ -25,11 +25,12 @@ class App extends Component {
             componentId="mainSearch"
             dataField={["original_title", "original_title.search", "authors", "authors.search"]}
             queryFormat="and"
-            placeholder=" Search for books or authors"
+            placeholder="🔍  Search for books or authors"
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
             }}
+            autosuggest={false}
             filterLabel="search"
           />
         </div>
@@ -81,11 +82,15 @@ class App extends Component {
               onData={(res)=>(
                 {
                   "image": res.image,
-                  "title": res.original_title,
+                  "title": res.original_title || " ",
                   "desc":  res.average_rating + " ★ " +
-                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/>by " + res.authors
+                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>"
                 }
               )}
+              innerClass={{
+                "image": "result-image",
+                "resultStats": "result-stats"
+              }}
             />
           </div>
         </div>
