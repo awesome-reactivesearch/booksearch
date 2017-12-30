@@ -75,6 +75,10 @@
   }
 }
 
+.author-list {
+  max-height: 150px !important;
+}
+
 .mainBar {
   width: calc(100% - 320px);
   position: relative;

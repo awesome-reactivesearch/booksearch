@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   ReactiveBase,
   DataSearch,
-  MultiDropdownList,
+  MultiList,
+  RangeSlider,
   SingleRange,
   SelectedFilters,
   ResultCard
@@ -25,7 +26,7 @@ class App extends Component {
             componentId="mainSearch"
             dataField={["original_title", "original_title.search", "authors", "authors.search"]}
             queryFormat="and"
-            placeholder="🔍  Search for books or authors"
+            placeholder="🔍  Search for a book title or an author"
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
@@ -49,19 +50,34 @@ class App extends Component {
               react={{
                 and: "mainSearch"
               }}
-              filterLabel="ratings"
+              filterLabel="Ratings"
             />
-            <MultiDropdownList
+            <RangeSlider
               componentId="publishFilter"
               dataField="original_publication_year"
-              title="Published Year"
-              size={50}
-              placeholder="Filter"
-              showSearch={false}
-              showCheckbox={false}
-              showCount={false}
-              sortBy="desc"
+              title="Year of Publication"
               filterLabel="published"
+              range={{
+                start: 1970,
+                end: 2017
+              }}
+              rangeLabels={{
+                start: "1970",
+                end: "2017"
+              }}
+              interval={2}
+            />
+            <MultiList
+              componentId="authorFilter"
+              dataField="authors.raw"
+              title="Authors"
+              size={1000}
+              showCheckbox={false}
+              innerClass={{
+                "list": "author-list"
+              }}
+              placeholder="Filter by author name"
+              filterLabel="Authors"
             />
           </div>
           <div className={"mainBar"}>
@@ -70,7 +86,7 @@ class App extends Component {
               componentId="results"
               dataField="original_title"
               react={{
-                "and": ["mainSearch", "ratingsFilter", "publishFilter"]
+                "and": ["mainSearch", "ratingsFilter", "publishFilter", "authorFilter"]
               }}
               pagination={true}
               size={8}
