@@ -6,7 +6,7 @@
     "react-scripts": "^1.0.17"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch": "^2.0.0-alpha-08",
+    "@appbaseio/reactivesearch": "^2.0.0-alpha-12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
