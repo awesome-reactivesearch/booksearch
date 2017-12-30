@@ -84,7 +84,8 @@ class App extends Component {
                   "image": res.image,
                   "title": res.original_title || " ",
                   "desc":  res.average_rating + " ★ " +
-                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>"
+                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>",
+                  "url": "https://google.com/search?q=" + res.original_title
                 }
               )}
               innerClass={{
