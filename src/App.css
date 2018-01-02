@@ -19,25 +19,14 @@
 }
 
 .datasearch {
-  background: none;
   margin-left: auto;
   margin-right: auto;
 }
 
-.datasearch > div {
-  background: none;
-}
-
-.searchbox {
-  background: #fefefe !important;
+.datasearch .searchbox {
   min-width: 400px;
   border-radius: 30px;
-  background: none;
-  padding: 5px 16px !important;
-}
-
-.searchbox:focus {
-  background: #fff;
+  padding: 5px 16px 5px 30px;
 }
 
 .suggestionlist {
@@ -75,8 +64,8 @@
   }
 }
 
-.author-list {
-  max-height: 150px !important;
+.author .author-list {
+  max-height: 150px;
 }
 
 .mainBar {
@@ -87,17 +76,13 @@
   background-color: #fefefe;
 }
 
-.result-image {
-  background-size: cover !important;
-  max-height: 200px !important;
+.result-data .result-image {
+  background-size: cover;
+  max-height: 200px;
 }
 
 .result-author {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.result-stats {
-  font-size: 12px;
 }

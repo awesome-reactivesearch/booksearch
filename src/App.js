@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <ReactiveBase
-        app="good-books-live"
-        credentials="sHZWU7AYJ:d1e2922c-035c-429f-bfe4-62aa38b1c395"
+        app="good-books-ds"
+        credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
       >
         <div className="navbar">
           <div className="logo">
@@ -26,12 +26,13 @@ class App extends Component {
             componentId="mainSearch"
             dataField={["original_title", "original_title.search", "authors", "authors.search"]}
             queryFormat="and"
-            placeholder="🔍  Search for a book title or an author"
+            placeholder="Search for a book title or an author"
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
             }}
             autosuggest={false}
+            iconPosition="left"
             filterLabel="search"
           />
         </div>
@@ -73,6 +74,7 @@ class App extends Component {
               title="Authors"
               size={1000}
               showCheckbox={false}
+              className="authors"
               innerClass={{
                 "list": "author-list"
               }}
@@ -99,11 +101,12 @@ class App extends Component {
                 {
                   "image": res.image,
                   "title": res.original_title || " ",
-                  "desc":  res.average_rating + " ★ " +
+                  "description":  res.average_rating + " ★ " +
                   "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>",
                   "url": "https://google.com/search?q=" + res.original_title
                 }
               )}
+              className="result-data"
               innerClass={{
                 "image": "result-image",
                 "resultStats": "result-stats"
