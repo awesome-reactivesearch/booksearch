@@ -67,6 +67,9 @@ class App extends Component {
                 end: "2017"
               }}
               interval={2}
+              react={{
+                and: "mainSearch"
+              }}
             />
             <MultiList
               componentId="authorFilter"
@@ -80,6 +83,9 @@ class App extends Component {
               }}
               placeholder="Filter by author name"
               filterLabel="Authors"
+              react={{
+                and: "mainSearch"
+              }}
             />
           </div>
           <div className={"mainBar"}>
