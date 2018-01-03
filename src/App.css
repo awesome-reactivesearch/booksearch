@@ -50,24 +50,6 @@
   border-right: 1px solid #f0f0f0;
 }
 
-.leftSidebar > div {
-  margin: 40px 0;
-}
-
-@media all and (max-width: 768px) {
-  .leftSidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-}
-
-.author .author-list {
-  max-height: 150px;
-}
-
 .mainBar {
   width: calc(100% - 320px);
   position: relative;
@@ -79,10 +61,4 @@
 .result-data .result-image {
   background-size: cover;
   max-height: 200px;
-}
-
-.result-author {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
