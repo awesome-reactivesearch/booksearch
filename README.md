@@ -6,7 +6,7 @@ Booksearch app demos the use of [ReactiveSearch](https://opensource.appbase.io/r
 
 ## Read About It
 
-A how to build post is available at [codeburst](https://codeburst.io/how-to-build-an-e-commerce-search-ui-with-react-and-elasticsearch-a581c823b2c3).
+A how to build post is available at [codeburst, 7 mins read](https://codeburst.io/how-to-build-an-e-commerce-search-ui-with-react-and-elasticsearch-a581c823b2c3).
 
 ## License
 
