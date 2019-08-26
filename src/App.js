@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ReactiveBase,
   DataSearch,
@@ -6,9 +6,10 @@ import {
   RangeSlider,
   SingleRange,
   SelectedFilters,
-  ResultCard
-} from '@appbaseio/reactivesearch';
-import './App.css';
+  ResultCard,
+  ReactiveList
+} from "@appbaseio/reactivesearch";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -18,18 +19,21 @@ class App extends Component {
         credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
       >
         <div className="navbar">
-          <div className="logo">
-            The Booksearch App
-          </div>
+          <div className="logo">The Booksearch App</div>
           <DataSearch
             className="datasearch"
             componentId="mainSearch"
-            dataField={["original_title", "original_title.search", "authors", "authors.search"]}
+            dataField={[
+              "original_title",
+              "original_title.search",
+              "authors",
+              "authors.search"
+            ]}
             queryFormat="and"
             placeholder="Search for a book title or an author"
             innerClass={{
-              "input": "searchbox",
-              "list": "suggestionlist"
+              input: "searchbox",
+              list: "suggestionlist"
             }}
             autosuggest={false}
             iconPosition="left"
@@ -46,7 +50,7 @@ class App extends Component {
                 { start: 4, end: 5, label: "★★★★ & up" },
                 { start: 3, end: 5, label: "★★★ & up" },
                 { start: 2, end: 5, label: "★★ & up" },
-                { start: 1, end: 5, label: "★ & up" },
+                { start: 1, end: 5, label: "★ & up" }
               ]}
               react={{
                 and: "mainSearch"
@@ -76,7 +80,7 @@ class App extends Component {
               showCheckbox={false}
               className="authors"
               innerClass={{
-                "list": "author-list"
+                list: "author-list"
               }}
               placeholder="Filter by author name"
               filterLabel="Authors"
@@ -84,33 +88,70 @@ class App extends Component {
           </div>
           <div className={"mainBar"}>
             <SelectedFilters />
-            <ResultCard
-              componentId="results"
+            <ReactiveList
+              componentId="SearchResult"
               dataField="original_title"
-              react={{
-                "and": ["mainSearch", "ratingsFilter", "publishFilter", "authorFilter"]
-              }}
-              pagination={true}
               size={8}
-              sortOptions={[
-                { dataField: "average_rating", sortBy: "desc", label: "Ratings (High to low)" },
-                { dataField: "original_title.raw", sortBy: "asc", label: "Title A->Z"},
-                { dataField: "original_title.raw", sortBy: "desc", label: "Title Z->A"}
-              ]}
-              onData={(res)=>(
-                {
-                  "image": res.image,
-                  "title": res.original_title || " ",
-                  "description":  res.average_rating + " ★ " +
-                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>",
-                  "url": "https://google.com/search?q=" + res.original_title
-                }
-              )}
-              className="result-data"
-              innerClass={{
-                "image": "result-image",
-                "resultStats": "result-stats"
+              pagination
+              react={{
+                and: [
+                  "mainSearch",
+                  "ratingsFilter",
+                  "publishFilter",
+                  "authorFilter"
+                ]
               }}
+              render={({ data }) => (
+                <ReactiveList.ResultCardsWrapper>
+                  {data.map(item => (
+                    <ResultCard key={item.id}>
+                      <ResultCard.Image src={item.image} />
+                      <ResultCard.Title>
+                        <div
+                          className="book-title"
+                          dangerouslySetInnerHTML={{
+                            __html: item.original_title
+                          }}
+                        />
+                      </ResultCard.Title>
+
+                      <ResultCard.Description>
+                        <div className="flex column justify-space-between">
+                          <div>
+                            <div>
+                              by{" "}
+                              <span className="authors-list">
+                                {item.authors}
+                              </span>
+                            </div>
+                            <div className="ratings-list flex align-center">
+                              <span className="stars">
+                                {Array(item.average_rating_rounded)
+                                  .fill("x")
+                                  .map((
+                                    item, // eslint-disable-line
+                                    index
+                                  ) => (
+                                    <i
+                                      className="fas fa-star"
+                                      key={index} // eslint-disable-line
+                                    />
+                                  ))}
+                              </span>
+                              <span className="avg-rating">
+                                ({item.average_rating} avg)
+                              </span>
+                            </div>
+                          </div>
+                          <span className="pub-year">
+                            Pub {item.original_publication_year}
+                          </span>
+                        </div>
+                      </ResultCard.Description>
+                    </ResultCard>
+                  ))}
+                </ReactiveList.ResultCardsWrapper>
+              )}
             />
           </div>
         </div>

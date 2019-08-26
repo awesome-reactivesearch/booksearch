@@ -5,12 +5,13 @@
   "homepage": "https://appbaseio-apps.github.io/booksearch",
   "devDependencies": {
     "gh-pages": "^1.1.0",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.0.17",
+    "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch": "^2.0.0-beta",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "@appbaseio/reactivesearch": "^3.0.0-rc.26",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
