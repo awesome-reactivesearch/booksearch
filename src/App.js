@@ -91,7 +91,7 @@ class App extends Component {
             <ReactiveList
               componentId="SearchResult"
               dataField="original_title"
-              size={10}
+              size={8}
               pagination
               react={{
                 and: [
