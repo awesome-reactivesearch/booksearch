@@ -16,7 +16,8 @@ class App extends Component {
     return (
       <ReactiveBase
         app="good-books-ds"
-        credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
+        url="https://xe6N9nDRV:51ea7a8a-6354-4b5f-83e1-12dce3b7ec47@arc-cluster-appbase-demo-ps1pgt.searchbase.io"
+        enableAppbase
       >
         <div className="navbar">
           <div className="logo">The Booksearch App</div>
@@ -74,7 +75,7 @@ class App extends Component {
             />
             <MultiList
               componentId="authorFilter"
-              dataField="authors.raw"
+              dataField="authors.keyword"
               title="Authors"
               size={1000}
               showCheckbox={false}
@@ -87,7 +88,7 @@ class App extends Component {
             />
           </div>
           <div className={"mainBar"}>
-            <SelectedFilters />
+            <SelectedFilters showClearAll="default" />
             <ReactiveList
               componentId="SearchResult"
               dataField="original_title"
@@ -101,6 +102,23 @@ class App extends Component {
                   "authorFilter"
                 ]
               }}
+              sortOptions={[
+                {
+                  dataField: "average_rating",
+                  sortBy: "desc",
+                  label: "Ratings (High to low)"
+                },
+                {
+                  dataField: "original_title.keyword",
+                  sortBy: "asc",
+                  label: "Title A->Z"
+                },
+                {
+                  dataField: "original_title.keyword",
+                  sortBy: "desc",
+                  label: "Title Z->A"
+                }
+              ]}
               render={({ data }) => (
                 <ReactiveList.ResultCardsWrapper>
                   {data.map(item => (
