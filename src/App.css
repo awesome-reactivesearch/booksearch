@@ -21,12 +21,15 @@
 .searchbar {
   margin-left: auto;
   margin-right: auto;
-}
-
-.searchbar .searchbox {
-  min-width: 400px;
+  min-width: min(60vw, 400px);
   border-radius: 30px;
+  background: white;
+  border: 1px solid;
+}
+.searchbar .searchbox {
   padding: 5px 31px 5px 35px;
+  border-radius: 30px;
+  border: none;
 }
 
 .suggestionlist {
@@ -87,4 +90,40 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.input-addon {
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+.focus-shortcut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
+  border-radius: 0;
+  box-shadow: inset 0px -2px 0px 1px #cdcde6, inset 0 0 1px 1px #fff,
+    0 1px 2px 1px rgb(30 35 90 / 40%);
+  color: #969faf;
+  height: 24px;
+  margin-right: 0.4em;
+  padding-bottom: 2px;
+  position: relative;
+  top: -1px;
+  min-width: 24px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: default;
+  border: none;
+  padding-bottom: 4px;
+  background-color: transparent;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .input-addon {
+    display: none;
+  }
 }

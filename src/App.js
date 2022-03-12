@@ -54,7 +54,11 @@ class App extends Component {
               input: "searchbox",
               list: "suggestionlist",
             }}
-            showClear
+            addonAfter={
+              <span tabIndex="1" className="focus-shortcut">
+                /
+              </span>
+            }
           />
         </div>
         <div className={"display"}>
