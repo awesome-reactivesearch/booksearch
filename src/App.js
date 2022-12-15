@@ -26,8 +26,6 @@ class App extends Component {
             dataField={[
               "original_title",
               "original_title.search",
-              "authors",
-              "authors.search",
             ]}
             categoryField="genres.keyword"
             queryFormat="and"
